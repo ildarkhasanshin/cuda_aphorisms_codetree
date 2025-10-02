@@ -31,7 +31,7 @@ class Command:
 
     def get_random_line(self):
         fn = 'data_ru.txt' if 'ru' in locale.getlocale()[0] else 'data_en.txt'
-        path = os.path.dirname(os.path.realpath(__file__)) + '/' + fn
+        path = os.path.dirname(os.path.realpath(__file__)) + os.sep + fn
         try:
             with open(path, 'r', encoding = 'utf-8') as file:
                 lines = file.readlines()
