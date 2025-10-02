@@ -2,21 +2,14 @@ import os
 from cudatext import *
 import random
 import locale
-import cuda_addonman
 
 class Command:
 
     def __init__(self):
         self.h_tree = app_proc(PROC_GET_CODETREE, '')
-        self.lexer_def = 'Text with indentation'
-        self.lexer_def_ = 'Text_with_indentation'
-
-        self.packets = cuda_addonman.work_remote.get_remote_addons_list(cuda_addonman.opt.ch_def + cuda_addonman.opt.ch_user)
-        for packet in self.packets:
-            if (packet['name'] == self.lexer_def_):
-                fn = cuda_addonman.work_remote.get_plugin_zip(packet['url'])
-                if os.path.isfile(fn):
-                    file_open(fn, options='/silent')
+        self.lexer_def = 'aphorism'
+        if not lexer_proc(LEXER_ADD_VIRTUAL, (self.lexer_def, '', '', '', '')):
+            print(f'error: cannot add virtual lexer "{self.lexer_def}"')
 
     def update_tree(self):
         ed.set_prop(PROP_CODETREE, False)
@@ -28,8 +21,8 @@ class Command:
 
     def check_and_update(self):
         if ed.get_prop(PROP_LEXER_FILE) == '':
-            ed.set_prop(PROP_LEXER_FILE, self.lexer_def)
-        if ed.get_prop(PROP_LEXER_FILE) == self.lexer_def:
+            ed.set_prop(PROP_LEXER_FILE, self.lexer_def + ' ^')
+        if ed.get_prop(PROP_LEXER_FILE) == self.lexer_def + ' ^':
             self.update_tree()
 
     def on_open(self, ed_self):
