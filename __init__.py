@@ -12,7 +12,6 @@ class Command:
         self.lexer_def_ = 'Text_with_indentation'
 
         self.packets = cuda_addonman.work_remote.get_remote_addons_list(cuda_addonman.opt.ch_def + cuda_addonman.opt.ch_user)
-        print(self.packets)
         for packet in self.packets:
             if (packet['name'] == self.lexer_def_):
                 fn = cuda_addonman.work_remote.get_plugin_zip(packet['url'])
