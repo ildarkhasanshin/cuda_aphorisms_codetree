@@ -2,8 +2,8 @@
 title=Aphorisms in Code tree
 desc=For None-lexer in Code-tree output random aphorism
 type=cudatext-plugin
-subdir=cuda_aphorisms_treecode
-homepage=https://github.com/ildarkhasanshin/cuda_aphorisms_treecode
+subdir=cuda_aphorisms_codetree
+homepage=https://github.com/ildarkhasanshin/cuda_aphorisms_codetree
 
 [item1]
 section=events
